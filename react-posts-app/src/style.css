@@ -1,0 +1,39 @@
+body {
+    background: linear-gradient(to right, orange, white, salmon);
+}
+
+
+.posts-app {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    background: linear-gradient(to right, salmon, white, orange);
+    border: 1px solid pink;
+    border-radius: 5px;
+}
+
+.posts-form label {
+    display: block;
+}
+
+.post-item {
+    list-style-type: none;
+    border: 1px solid rebeccapurple;
+    text-align: left;
+    width: 100%;
+}
+
+.vote-buttons {
+    padding: 5px;
+}
+
+.vote-buttons button {
+    background: linear-gradient(to left, beige, white);
+}
+
+.vote-buttons button:nth-child(2) {
+    margin-left: 5px;
+}
+
