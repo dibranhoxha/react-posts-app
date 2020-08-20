@@ -8,11 +8,11 @@ class App extends React.Component {
       <div className="posts-app">
           <h1>Posts App</h1>
         <form className="posts-form">
-          <label>title</label>
-          <input type="text"></input>
-          <label>content</label>
-          <textarea></textarea>
-          <button>Submit</button>
+          <label for="post-input">Title</label>
+          <input type="text" id="post-input" placeholder="Type a post title.."></input>
+          <label for="post-textarea">Content</label>
+          <textarea placeholder="What are you thinking!.." id="post-textarea"></textarea>
+          <button>Post</button>
         </form>
         <div className="posts-list">
           <PostsList />

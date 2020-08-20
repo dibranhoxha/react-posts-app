@@ -1,5 +1,6 @@
 body {
-    background: linear-gradient(to right, orange, white, salmon);
+    background-color: #9266ff;
+    color: white;
 }
 
 
@@ -9,31 +10,96 @@ body {
     text-align: center;
     padding: 20px;
     font-family: 'Courier New', Courier, monospace;
-    background: linear-gradient(to right, salmon, white, orange);
+    background-color: #3f3160;
     border: 1px solid pink;
     border-radius: 5px;
 }
 
+.posts-app h1 {
+    color: white;
+}
+
+.posts-form {
+    text-align: left;
+}
+
 .posts-form label {
     display: block;
+    font-weight: bold;
+}
+
+form.posts-form #post-textarea, #post-input {
+    background-color: rgb(27, 112, 137);
+    border: 0;
+    width: 99%;
+    margin-top: 5px;
+    color: white;
+    border-radius: 7px;
+    padding-left: 10px;
+}
+
+#post-textarea {
+    height: 70px;
+}
+
+#post-input {
+    height: 25px;
+    margin-bottom: 5px;
+}
+
+#post-input::placeholder,#post-textarea::placeholder {
+    color: rgba(255 , 255, 255, 0.5);
+    font-size: 16px;
+}
+
+#post-input:focus,#post-textarea:focus,.posts-form:focus {
+    outline: none;
+}
+
+.posts-form button {
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    border: 0;
+    background-color: rgb(202, 156, 24);
+    cursor: pointer;
+    color: white;
+}
+
+div.posts-list {
+    text-align: left;
+    margin-top: 10px;
 }
 
 .post-item {
     list-style-type: none;
-    border: 1px solid rebeccapurple;
-    text-align: left;
-    width: 100%;
 }
 
-.vote-buttons {
+.post-item p {
+    width: 90%;
+}
+
+
+div.vote-buttons {
     padding: 5px;
+    text-align: right;
+    width: 90%;
 }
 
 .vote-buttons button {
     background: linear-gradient(to left, beige, white);
+    border: none;
+    color: red;
 }
 
 .vote-buttons button:nth-child(2) {
     margin-left: 5px;
 }
+
+.post-title {
+    border-bottom: 1px solid grey;
+    width: 90%;
+}
+
+
 
