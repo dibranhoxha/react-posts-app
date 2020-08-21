@@ -1,5 +1,6 @@
 import React from "react";
 import PostItem from "./Post-Item";
+import Moment from 'moment';
 
 class PostsList extends React.Component {
   constructor() {
@@ -8,6 +9,7 @@ class PostsList extends React.Component {
       posts: [],
       title: "",
       content: "",
+      date: ''
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -16,11 +18,14 @@ class PostsList extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
+    const newPosts = {
+      id: 1,
+      title: this.state.title,
+      content: this.state.content,
+      date: Moment().format('DD.MM.YYYY hh:mm:ss ')
+    };
     this.setState((prevState) => ({
-      posts: [
-        ...prevState.posts,
-        { title: this.state.title, content: this.state.content },
-      ],
+      posts: [...prevState.posts, newPosts],
     }));
   }
 
@@ -66,7 +71,7 @@ class PostsList extends React.Component {
           {!this.state.posts ? (
             <h3>Enter something!..</h3>
           ) : (
-            this.state.posts.map(e => <PostItem title={e.title} content={e.content} /> ) 
+            this.state.posts.map((e) => <PostItem data={e} />)
           )}
         </ul>
       </>

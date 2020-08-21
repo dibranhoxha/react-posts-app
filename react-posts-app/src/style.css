@@ -84,8 +84,14 @@ div.posts-list {
 }
 
 .post-item p {
+    position: relative;
     width: 90%;
-    text-align: justify;
+    text-align: justify;    
+}
+
+span {
+    position: absolute;
+    right: 1px;
 }
 
 div.vote-buttons {
@@ -108,6 +114,8 @@ div.vote-buttons {
     border-bottom: 1px solid grey;
     width: fit-content;
 }
+
+
 
 
 
