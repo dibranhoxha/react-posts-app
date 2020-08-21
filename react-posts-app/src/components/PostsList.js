@@ -6,23 +6,22 @@ class PostsList extends React.Component {
   constructor() {
     super();
     this.state = {
-      posts: [],
-      title: "",
-      content: "",
-      date: ''
+      posts: []
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeContent = this.onChangeContent.bind(this);
+    this.toggleVote = this.toggleVote.bind(this);
   }
 
   onSubmit(e) {
     e.preventDefault();
     const newPosts = {
-      id: 1,
+      id: this.state.posts.length,
       title: this.state.title,
       content: this.state.content,
-      date: Moment().format('DD.MM.YYYY hh:mm:ss ')
+      date: Moment().format('DD.MM.YYYY hh:mm:ss '),
+      upvote: false
     };
     this.setState((prevState) => ({
       posts: [...prevState.posts, newPosts],
@@ -39,6 +38,21 @@ class PostsList extends React.Component {
     this.setState({
       content: e.target.value,
     });
+  }
+
+  toggleVote(id) {
+      this.setState(prevState => {
+          const posts = prevState.posts.map(e => {
+              if(e.id === id) {
+                  e.upvote = !e.upvote
+              }
+              return e;
+          });
+          return {
+              posts
+          };
+      })
+
   }
 
   render() {
@@ -68,10 +82,10 @@ class PostsList extends React.Component {
           </div>
         </form>
         <ul className="posts-list">
-          {!this.state.posts ? (
+          {!this.state.posts.length ? (
             <h3>Enter something!..</h3>
           ) : (
-            this.state.posts.map((e) => <PostItem data={e} />)
+            this.state.posts.map((post) => (<PostItem key={post.id} data={post} toggleVote={() => this.toggleVote(post.id)} />))
           )}
         </ul>
       </>

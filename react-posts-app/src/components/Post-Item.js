@@ -3,17 +3,18 @@ import React from "react";
 class PostsItem extends React.Component {
     
   render() {
-
+    const { title, content, date } = this.props.data;
+    const { toggleVote } = this.props;
     return (
       <li className="post-item">
-        <h3 className="post-title">{this.props.data.title}</h3>
+        <h3 className="post-title">{title}</h3>
         <p>
-          {this.props.data.content}
-          <span>{this.props.data.date}</span>
+          {content}
+          <span>{date}</span>
         </p>
     
         <div className="vote-buttons">
-          <button>Upvote</button>
+          <button className={this.props.data.upvote ? 'upvote':''} onClick={toggleVote}>{this.props.data.upvote ? 'Downvote':'Upvote'}</button>
           <button>Edit</button>
         </div>
       </li>

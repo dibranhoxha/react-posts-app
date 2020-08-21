@@ -101,9 +101,17 @@ div.vote-buttons {
 }
 
 .vote-buttons button {
-    background: linear-gradient(to left, beige, white);
     border: none;
-    color: red;
+    width: 70px;
+    border-radius: 5px;
+    border: 0;
+    background-color: rgb(255, 100, 24);
+    cursor: pointer;
+    color: white;
+}
+
+.vote-buttons button.upvote {
+    background-color: green;
 }
 
 .vote-buttons button:nth-child(2) {
