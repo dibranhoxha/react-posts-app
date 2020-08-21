@@ -12,6 +12,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
     background-color: #3f3160;
     border: 1px solid pink;
+    box-shadow: white 2px 1px;
     border-radius: 5px;
 }
 
@@ -31,7 +32,7 @@ body {
 form.posts-form #post-textarea, #post-input {
     background-color: rgb(27, 112, 137);
     border: 0;
-    width: 99%;
+    width: 98%;
     margin-top: 5px;
     color: white;
     border-radius: 7px;
@@ -40,20 +41,26 @@ form.posts-form #post-textarea, #post-input {
 
 #post-textarea {
     height: 70px;
+    font-size: 17px;
 }
 
 #post-input {
     height: 25px;
     margin-bottom: 5px;
+    font-size: 17px;
 }
 
 #post-input::placeholder,#post-textarea::placeholder {
     color: rgba(255 , 255, 255, 0.5);
-    font-size: 16px;
+    font-size: 17px;
 }
 
 #post-input:focus,#post-textarea:focus,.posts-form:focus {
     outline: none;
+}
+
+div#form-button {
+    text-align: right;
 }
 
 .posts-form button {
@@ -69,6 +76,7 @@ form.posts-form #post-textarea, #post-input {
 div.posts-list {
     text-align: left;
     margin-top: 10px;
+    height: auto;
 }
 
 .post-item {
@@ -77,8 +85,8 @@ div.posts-list {
 
 .post-item p {
     width: 90%;
+    text-align: justify;
 }
-
 
 div.vote-buttons {
     padding: 5px;
@@ -98,7 +106,7 @@ div.vote-buttons {
 
 .post-title {
     border-bottom: 1px solid grey;
-    width: 90%;
+    width: fit-content;
 }
 
 

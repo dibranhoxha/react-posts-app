@@ -1,28 +1,75 @@
 import React from "react";
+import PostItem from "./Post-Item";
 
 class PostsList extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      posts: [],
+      title: "",
+      content: "",
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeContent = this.onChangeContent.bind(this);
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    this.setState((prevState) => ({
+      posts: [
+        ...prevState.posts,
+        { title: this.state.title, content: this.state.content },
+      ],
+    }));
+  }
+
+  onChangeTitle(e) {
+    this.setState({
+      title: e.target.value,
+    });
+  }
+
+  onChangeContent(e) {
+    this.setState({
+      content: e.target.value,
+    });
+  }
+
   render() {
+    //   console.log(this.state.posts);
     return (
-      <ul className="posts-list">
-        <li className="post-item">
-          <h3 className="post-title">title</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum
-          </p>
-          <div className="vote-buttons">
-            <button>Upvote</button>
-            <button>Edit</button>
+      <>
+        <form className="posts-form" onSubmit={this.onSubmit}>
+          <label htmlFor="post-input">Title</label>
+          <input
+            type="text"
+            id="post-input"
+            placeholder="Type a post title.."
+            value={this.state.title}
+            onChange={this.onChangeTitle}
+            required
+          ></input>
+          <label htmlFor="post-textarea">Content</label>
+          <textarea
+            placeholder="What are you thinking!.."
+            id="post-textarea"
+            value={this.state.content}
+            onChange={this.onChangeContent}
+            required
+          ></textarea>
+          <div id="form-button">
+            <button>Post</button>
           </div>
-        </li>
-      </ul>
+        </form>
+        <ul className="posts-list">
+          {!this.state.posts ? (
+            <h3>Enter something!..</h3>
+          ) : (
+            this.state.posts.map(e => <PostItem title={e.title} content={e.content} /> ) 
+          )}
+        </ul>
+      </>
     );
   }
 }
