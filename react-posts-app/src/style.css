@@ -39,6 +39,27 @@ form.posts-form #post-textarea, #post-input {
     padding-left: 10px;
 }
 
+form.posts-form #post-edit-textarea, #post-edit-input {
+    background-color: rgb(27, 112, 137);
+    border: 0;
+    width: 90%;
+    margin-top: 5px;
+    color: white;
+    border-radius: 7px;
+    padding-left: 10px;
+}
+
+#post-edit-input {
+    height: 25px;
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+#post-edit-textarea {
+    height: 70px;
+    font-size: 17px;
+}
+
 #post-textarea {
     height: 70px;
     font-size: 17px;
@@ -50,12 +71,13 @@ form.posts-form #post-textarea, #post-input {
     font-size: 17px;
 }
 
-#post-input::placeholder,#post-textarea::placeholder {
+#post-input::placeholder,#post-textarea::placeholder,#post-edit-input::placeholder,#post-edit-textarea::placeholder {
     color: rgba(255 , 255, 255, 0.5);
     font-size: 17px;
 }
 
-#post-input:focus,#post-textarea:focus,.posts-form:focus {
+
+#post-input:focus,#post-textarea:focus, #post-edit-input:focus,#post-edit-textarea:focus {
     outline: none;
 }
 

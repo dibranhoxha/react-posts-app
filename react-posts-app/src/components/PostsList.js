@@ -15,6 +15,7 @@ class PostsList extends React.Component {
     this.onChangeContent = this.onChangeContent.bind(this);
     this.toggleVote = this.toggleVote.bind(this);
     this.removePost = this.removePost.bind(this);
+    this.editPost = this.editPost.bind(this);
   }
 
   onSubmit(e) {
@@ -28,6 +29,8 @@ class PostsList extends React.Component {
     };
     this.setState((prevState) => ({
       posts: [...prevState.posts, newPosts],
+      title: '',
+      content: ''
     }));
   }
 
@@ -66,8 +69,25 @@ class PostsList extends React.Component {
     });
   }
 
+  editPost(id) {
+    const title = prompt('Edit title: ');
+    const content = prompt('Edit content: ');
+    this.setState((prevState) => {
+        const posts = prevState.posts.map((e) => {
+          if (e.id === id) {
+            e.title = title;
+            e.content = content;
+            e.date = Moment().format("DD.MM.YYYY hh:mm:ss ");
+          }
+          return e;
+        });
+        return {
+          posts,
+        };
+      });
+  }
+
   render() {
-    //   console.log(this.state.posts);
     return (
       <>
         <form className="posts-form" onSubmit={this.onSubmit}>
@@ -102,6 +122,7 @@ class PostsList extends React.Component {
                 data={post}
                 toggleVote={() => this.toggleVote(post.id)}
                 removePost={() => this.removePost(post.id)}
+                editPost={() => this.editPost(post.id)}
               />
             ))
           )}
