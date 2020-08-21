@@ -1,17 +1,20 @@
 import React from "react";
 import PostItem from "./Post-Item";
-import Moment from 'moment';
+import Moment from "moment";
 
 class PostsList extends React.Component {
   constructor() {
     super();
     this.state = {
-      posts: []
+      posts: [],
+      title: "",
+      textarea: "",
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeContent = this.onChangeContent.bind(this);
     this.toggleVote = this.toggleVote.bind(this);
+    this.removePost = this.removePost.bind(this);
   }
 
   onSubmit(e) {
@@ -20,8 +23,8 @@ class PostsList extends React.Component {
       id: this.state.posts.length,
       title: this.state.title,
       content: this.state.content,
-      date: Moment().format('DD.MM.YYYY hh:mm:ss '),
-      upvote: false
+      date: Moment().format("DD.MM.YYYY hh:mm:ss "),
+      upvote: false,
     };
     this.setState((prevState) => ({
       posts: [...prevState.posts, newPosts],
@@ -41,18 +44,26 @@ class PostsList extends React.Component {
   }
 
   toggleVote(id) {
-      this.setState(prevState => {
-          const posts = prevState.posts.map(e => {
-              if(e.id === id) {
-                  e.upvote = !e.upvote
-              }
-              return e;
-          });
-          return {
-              posts
-          };
-      })
+    this.setState((prevState) => {
+      const posts = prevState.posts.map((e) => {
+        if (e.id === id) {
+          e.upvote = !e.upvote;
+        }
+        return e;
+      });
+      return {
+        posts,
+      };
+    });
+  }
 
+  removePost(id) {
+    this.setState((prevState) => {
+      const posts = prevState.posts.filter((e) => e.id !== id);
+      return {
+        posts,
+      };
+    });
   }
 
   render() {
@@ -85,7 +96,14 @@ class PostsList extends React.Component {
           {!this.state.posts.length ? (
             <h3>Enter something!..</h3>
           ) : (
-            this.state.posts.map((post) => (<PostItem key={post.id} data={post} toggleVote={() => this.toggleVote(post.id)} />))
+            this.state.posts.map((post) => (
+              <PostItem
+                key={post.id}
+                data={post}
+                toggleVote={() => this.toggleVote(post.id)}
+                removePost={() => this.removePost(post.id)}
+              />
+            ))
           )}
         </ul>
       </>

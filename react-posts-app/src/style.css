@@ -101,6 +101,7 @@ div.vote-buttons {
 }
 
 .vote-buttons button {
+    margin-left: 5px;
     border: none;
     width: 70px;
     border-radius: 5px;

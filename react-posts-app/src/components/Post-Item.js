@@ -4,7 +4,7 @@ class PostsItem extends React.Component {
     
   render() {
     const { title, content, date } = this.props.data;
-    const { toggleVote } = this.props;
+    const { toggleVote, removePost } = this.props;
     return (
       <li className="post-item">
         <h3 className="post-title">{title}</h3>
@@ -16,6 +16,7 @@ class PostsItem extends React.Component {
         <div className="vote-buttons">
           <button className={this.props.data.upvote ? 'upvote':''} onClick={toggleVote}>{this.props.data.upvote ? 'Downvote':'Upvote'}</button>
           <button>Edit</button>
+          <button onClick={removePost}>Remove</button>
         </div>
       </li>
     );
